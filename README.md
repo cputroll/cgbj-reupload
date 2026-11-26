@@ -59,9 +59,17 @@ tools, and your own dump of the title.
 git clone https://github.com/avatarmanz/VIctory-7900XTX
 cd VIctory-7900XTX
 copy victory.example.toml victory.toml      # then set your paths, outside this folder
+scripts\doctor.ps1                          # read-only check of the machine and paths
 cargo build --locked --profile diag -p victory --features diagnostics
 scripts\play.ps1 -Exe <path of your copy's executable>
 ```
+
+`scripts\doctor.ps1` reports the OS, CPU/AVX2, memory and commit limit, GPU,
+Rust/MSVC tools, the resolved config paths and `dxil.dll` as `OK`, `WARN` or
+`FAIL`, and exits with 1 if any check fails. It changes nothing. Pass `-Exe`
+to check your copy's executable too. Shader model 6.6 and mesh shader support
+can only be confirmed once the host starts; the log line
+`host mesh shader support` says what was found.
 
 `scripts\play.ps1 -Safe` leaves out the newest, faster ways; try it first when
 something is wrong. `-RayTracing` turns the title's ray-traced indirect light on.
