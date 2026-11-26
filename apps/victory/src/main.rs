@@ -8,6 +8,8 @@ mod inspect;
 #[cfg(all(windows, feature = "diagnostics"))]
 mod replay;
 mod run;
+#[cfg(windows)]
+mod sdkpath;
 mod shader;
 mod translate;
 #[cfg(windows)]
